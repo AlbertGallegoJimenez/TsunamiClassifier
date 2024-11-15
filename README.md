@@ -2,15 +2,16 @@
 A **neural network model for binary classification of seismic events**, distinguishing earthquake events that generate tsunamis from those that do not. Leveraging deep learning to enhance tsunami prediction accuracy and improve early warning systems.
 
 - [TsunamiClassifier 🌊💻⚙️](#tsunamiclassifier-️)
-  - [Structure of the repo 📁](#structure-of-the-repo-)
+  - [Structure of the repository 📁](#structure-of-the-repository-)
   - [About the data 📊](#about-the-data-)
     - [Data source 🔍](#data-source-)
     - [Data labeling methodology 🏷️](#data-labeling-methodology-️)
   - [Feature Engineering 🛠️](#feature-engineering-️)
     - [Longitude and latitude 📍🗺️](#longitude-and-latitude-️)
+    - [Other features](#other-features)
   - [Performance of the model 🎯](#performance-of-the-model-)
 
-## Structure of the repo 📁
+## Structure of the repository 📁
 
 - 📂 [**data**](/data): Folder where the dataset (earthquakes.csv) is stored.
 - 📂 [**images**](/images): Folder with some images.
@@ -25,7 +26,9 @@ A **neural network model for binary classification of seismic events**, distingu
 
 ### Data source 🔍
 
-The dataset used for training the model is stored at the data folder as [earthquakes.csv](/data/earthquakes.csv). This dataset is generated with earthquake data gathered from [USGS earthquakes database](https://www.usgs.gov/programs/earthquake-hazards/earthquakes).
+The dataset used for training the model is stored at the data folder as [earthquakes.csv](/data/earthquakes.csv).
+
+This dataset is generated with earthquake data gathered from the USGS [ANSS Comprehensive Earthquake Catalog (ComCat)](https://earthquake.usgs.gov/data/comcat/). The catalog started providing data since 1976 and includes seismic parameters such as hypocenters, magnitudes, phase picks, and amplitudes. With this data, new variables are calculated by applying analytical formulations, in particular the [Okada parametrization](https://www.bosai.go.jp/e/sp/pdf/Okada_1985_BSSA.pdf), which assumes that an earthquake can be considered as the rupture of a single fault plane. With this method, relevant parameters such as slip (vertical displacement of the fault), various angles (strike, dip, and rake), and geometric fault parameters (length and width) are inferred.
 
 
 ### Data labeling methodology 🏷️
@@ -43,7 +46,18 @@ To label each register of the dataset, a numerical model that generates and prop
 
 ### Longitude and latitude 📍🗺️
 
-The longitude and latitude coordinates were encoded using the Count Encoding cross bucketing technique. That is, both longitude and latitude are encoded into a single value that represents the number of positive events in each map cell.
+The longitude and latitude coordinates were encoded using the *Count Encoding cross-bucketing* technique. That is, both longitude and latitude are encoded into a single value that represents the number of positive events in each map cell. To estimate this count more robustly, bootstrapping was applied, allowing for the derivation of a reliable statistic from multiple samples given the absence of complete population data.
+
+<div align="center">
+      <img src="images/lonlat_count_encoding.png" width="80%">
+      <br>Fig 2. Map of the count of tsunamis in each lon-lat cell.
+</div>
+
+### Other features
+
+- A simple **conversion to radians** has been applied to the **angle features (strike, dip, and rake)**. With the exception of the **rake angle**, which was converted by calculating the **difference to 90º**.
+- Features with larger values, such as **focal depth, Mo, and fault length and width**, were **scaled logarithmically**.
+- The rest of the features, the **slip** and the **lon-lat count**, were normalized with a **standard scale** and a **min-max scale**, respectively.
 
 ## Performance of the model 🎯
 
