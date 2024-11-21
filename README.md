@@ -9,7 +9,8 @@ A **neural network model for binary classification of seismic events**, distingu
   - [Feature Engineering 🛠️](#feature-engineering-️)
     - [Longitude and latitude 📍🗺️](#longitude-and-latitude-️)
     - [Other features](#other-features)
-  - [Performance of the model 🎯](#performance-of-the-model-)
+  - [About the model 🧠💻](#about-the-model-)
+    - [Performance achieved 🎯](#performance-achieved-)
 
 ## Structure of the repository 📁
 
@@ -59,10 +60,21 @@ The longitude and latitude coordinates were encoded using the *Count Encoding cr
 - Features with larger values, such as **focal depth, Mo, and fault length and width**, were **scaled logarithmically**.
 - The rest of the features, the **slip** and the **lon-lat count**, were normalized with a **standard scale** and a **min-max scale**, respectively.
 
-## Performance of the model 🎯
+
+## About the model 🧠💻
+
+The resulting model is a **feedforward neural network (FNN)** comprising an input layer with a dimension of 9, four hidden layers with 128, 64, 32, and 16 neurons, respectively, and an output layer that depicts the tsunami probability (see Fig 3).
+
+<div align="center">
+      <img src="images/ann_diagram.png" width="80%">
+      <br>Fig 3. Diagram of the ANN model.
+</div>
+
+### Performance achieved 🎯
 
 The following figure shows the confusion matrix for the test set. The percentage of false negatives has been reduced to 0.3%, which is an optimal outcome considering the objective of minimizing this error. Although minimizing false positives is also important, the focus of this study prioritized reducing false negatives due to their greater relevance in this context.
 
 <div align="center">
       <img src="images/test_confusion_matrix.png" width="50%">
+      <br>Fig 4. Confusion matrix for the test set.
 </div>
