@@ -72,7 +72,7 @@ The resulting model is a **feedforward neural network (FNN)** comprising an inpu
 
 ### Performance achieved 🎯
 
-The following figure shows the confusion matrix for the test set. The percentage of false negatives has been reduced to 0.3%, which is an optimal outcome considering the objective of minimizing this error. Although minimizing false positives is also important, the focus of this study prioritized reducing false negatives due to their greater relevance in this context.
+The following figure shows the confusion matrix for the test set. The percentage of false negatives has been minimized to 0.3%, which is an optimal outcome considering the objective of minimizing this type of error. Although minimizing false positives is also important, the focus of this study was on reducing false negatives due to their greater relevance in considering the consequences of the tsunamis.
 
 <div align="center">
       <img src="images/test_confusion_matrix.png" width="50%">
