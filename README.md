@@ -11,6 +11,7 @@ A **neural network model for binary classification of seismic events**, distingu
     - [Other features](#other-features)
   - [About the model 🧠💻](#about-the-model-)
     - [Performance achieved 🎯](#performance-achieved-)
+  - [Contact 🙋🏻‍♂️](#contact-️)
 
 ## Structure of the repository 📁
 
@@ -34,7 +35,9 @@ This dataset is generated with earthquake data gathered from the USGS [ANSS Comp
 
 ### Data labeling methodology 🏷️
 
-To label each register of the dataset, a numerical model that generates and propagates the potential tsunami wave from the earthquake is used. After verifying the output of the numerical model, a criterion is applied to binarize the earthquake events into tsunami or non-tsunami. This criterion has been set to a threshold in the maximum wave height parameter, specifically to 0.16 m of wave height.
+To label each register of the dataset, a numerical model that generates and propagates the potential tsunami wave from the earthquake is used. After verifying the output of the numerical model, a criterion is applied to binarize the earthquake events into tsunami or non-tsunami. This criterion has been set to a threshold in the maximum wave height parameter, specifically to 0.15 m of wave height.
+
+Fig 1 shows a map with the events labeled as tsunami and non-tsunami.
 
 
 <div align="center">
@@ -47,7 +50,7 @@ To label each register of the dataset, a numerical model that generates and prop
 
 ### Longitude and latitude 📍🗺️
 
-The longitude and latitude coordinates were encoded using the *Count Encoding cross-bucketing* technique. That is, both longitude and latitude are encoded into a single value that represents the number of positive events in each map cell. To estimate this count more robustly, bootstrapping was applied, allowing for the derivation of a reliable statistic from multiple samples given the absence of complete population data.
+The longitude and latitude coordinates were encoded using the *Count Encoding cross-bucketing* technique (Fig 2). That is, both longitude and latitude are encoded into a single value that represents the number of positive events in each map cell. To estimate this count more robustly, bootstrapping was applied, allowing for the derivation of a reliable statistic from multiple samples given the absence of complete population data.
 
 <div align="center">
       <img src="images/lonlat_count_encoding.png" width="80%">
@@ -63,7 +66,7 @@ The longitude and latitude coordinates were encoded using the *Count Encoding cr
 
 ## About the model 🧠💻
 
-The resulting model is a **feedforward neural network (FNN)** comprising an input layer with a dimension of 9, four hidden layers with 128, 64, 32, and 16 neurons, respectively, and an output layer that depicts the tsunami probability (see Fig 3).
+The resulting model is a **feedforward neural network (FNN)** comprising an input layer with a dimension of 9, five hidden layers with 128, 64, 32, 16 and 8 neurons, respectively, and an output layer that depicts the tsunami probability (see Fig 3).
 
 <div align="center">
       <img src="images/ann_diagram.png" width="80%">
@@ -72,9 +75,24 @@ The resulting model is a **feedforward neural network (FNN)** comprising an inpu
 
 ### Performance achieved 🎯
 
-The following figure shows the confusion matrix for the test set. The percentage of false negatives has been minimized to 0.3%, which is an optimal outcome considering the objective of minimizing this type of error. Although minimizing false positives is also important, the focus of this study was on reducing false negatives due to their greater relevance in considering the consequences of the tsunamis.
+Fig 4 shows the confusion matrix for the test set. The percentage of false negatives has been minimized to 0.3%, which is an optimal outcome considering the objective of minimizing this type of error. Although minimizing false positives is also important, the focus of this study was on reducing false negatives due to their greater relevance in considering the consequences of the tsunamis.
 
 <div align="center">
       <img src="images/test_confusion_matrix.png" width="50%">
       <br>Fig 4. Confusion matrix for the test set.
 </div>
+<br>
+
+Figure 5 shows the model's probability distribution for positive events, which helps us understand how well it predicts. The model assigns a minimum probability of approximately 0.4 to positive events in the test set, demonstrating that even when the model makes an incorrect prediction, it does so by attributing a relatively high probability. The interquartile range, spanning from 0.6 to 0.8, shows the model can identify positive events with relatively high probabilities.
+
+<div align="center">
+      <img src="images/model_probability_distribution.png" width="85%">
+      <br>Fig 5. Model positive probability for positive events.
+</div>
+
+## Contact 🙋🏻‍♂️
+
+👨🏻‍💻 Albert Gallego Jiménez
+📧 agalleji8@gmail.com
+📧 gallegoa@unican.es
+🌐 [LinkedIn](https://www.linkedin.com/in/albert-gallego-jimenez)
