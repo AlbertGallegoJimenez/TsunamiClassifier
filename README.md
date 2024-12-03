@@ -41,7 +41,7 @@ Fig 1 shows a map with the events labeled as tsunami and non-tsunami.
 
 
 <div align="center">
-      <img src="images/events_map.png" width="150%">
+      <img src="images/earthquakes_animation.gif" width="150%">
       Fig 1. Map of the earthquake dataset with the tsunami label.
 </div>
 
