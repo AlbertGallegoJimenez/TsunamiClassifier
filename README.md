@@ -42,7 +42,7 @@ Fig 1 displays an animated map showing events labeled as either tsunamis or non-
 
 <div align="center">
       <img src="images/earthquakes_animation.gif" width="150%">
-      Fig 1. Map of the earthquake dataset with the tsunami label.
+      Fig 1. Map of the earthquake dataset with the tsunami label (the size of the points indicates the magnitude of each event).
 </div>
 
 
