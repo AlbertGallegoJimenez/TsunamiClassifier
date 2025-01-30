@@ -19,7 +19,7 @@ A **neural network model for binary classification of seismic events**, distingu
 - 📂 [**images**](/images): Folder with some images.
 - 📂 [**models**](/models): Folder in which the outputs of the notebook are stored. Specifically, the folder contains the model in an .h5 file and two pkl files needed to evaluate the model.
 - 📂 [**utils**](/utils): Folder with a Python script used for plotting purposes.
-- 📄[**notebook_tsunami.py**](notebook_tsunami.ipynb): Notebook used to compute the EDA and the training and validation of the model.
+- 📄[**notebook_tsunami.ipynb**](notebook_tsunami.ipynb): Notebook used to compute the EDA and the training and validation of the model.
 - 📄[**README.md**](README.md): This README file.
 - 📄[**requirements.txt**](requirements.txt): A requirements.txt file with the notebook's dependencies.
 
